@@ -28,8 +28,12 @@ namespace HashTableDemo
             hash.Add("16", "paranoid");
             hash.Add("17", "avoidable");
             hash.Add("18", "situation");
-            string hash12 = hash.Get("12");
-            Console.WriteLine("12th index value: " + hash12);
+            string hash18 = hash.Get("18");
+            Console.WriteLine("18th index value: " + hash18);
+
+            hash.Remove("15");
+            string hash15 = hash.Get("15");
+            Console.WriteLine("15th index value: " + hash15);
         }
 
     }

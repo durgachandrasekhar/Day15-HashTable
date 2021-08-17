@@ -4,13 +4,10 @@ using System.Text;
 
 namespace HashTableDemo
 {
-    class MyMapNode<K, V>
+    public class MyMapNode<K, V>
     {
-        //Instance
         private readonly int size;
         private readonly LinkedList<KeyValue<K, V>>[] items;
-
-        //constructor
         public MyMapNode(int size)
         {
             this.size = size;
@@ -22,14 +19,13 @@ namespace HashTableDemo
             int position = key.GetHashCode() % size;
             return Math.Abs(position);
         }
-
-        public V Get(K Key)
+        public V Get(K key)
         {
-            int position = GetArrayPosition(Key);
+            int position = GetArrayPosition(key);
             LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
             foreach (KeyValue<K, V> item in linkedList)
             {
-                if (item.Key.Equals(Key))
+                if (item.Key.Equals(key))
                 {
                     return item.Value;
                 }
@@ -43,18 +39,37 @@ namespace HashTableDemo
             KeyValue<K, V> item = new KeyValue<K, V>() { Key = key, Value = value };
             linkedList.AddLast(item);
         }
+        public void Remove(K key)
+        {
+            int position = GetArrayPosition(key);
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
+            bool itemFound = false;
+            KeyValue<K, V> foundItem = default(KeyValue<K, V>);
+            foreach (KeyValue<K, V> item in linkedList)
+            {
+                if (item.Key.Equals(key))
+                {
+                    itemFound = true;
+                    foundItem = item;
+                }
+            }
+            if (itemFound)
+            {
+                linkedList.Remove(foundItem);
+            }
+
+        }
         protected LinkedList<KeyValue<K, V>> GetLinkedList(int position)
         {
-            LinkedList<KeyValue<K, V>> linkedList = items[position];
-            if (linkedList == null)
+            LinkedList<KeyValue<K, V>> linkedlist = items[position];
+            if (linkedlist == null)
             {
-                linkedList = new LinkedList<KeyValue<K, V>>();
-                items[position] = linkedList;
+                linkedlist = new LinkedList<KeyValue<K, V>>();
+                items[position] = linkedlist;
             }
-            return linkedList;
+            return linkedlist;
         }
-
-        public struct KeyValue<k,v>
+        public struct KeyValue<k, v>
         {
             public K Key { get; set; }
             public V Value { get; set; }

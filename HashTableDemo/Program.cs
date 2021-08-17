@@ -6,27 +6,31 @@ namespace HashTableDemo
     {
         static void Main(string[] args)
         {
-            //welcome Message
-            Console.WriteLine("Welcome to HASH MAP DEMO!");
+            Console.WriteLine("Hash Table Demo !");
 
-            //Object of class MyMapNode
-            MyMapNode<string, string> myMapNode = new MyMapNode<string, string>(5);
-
-            //Add data
-            myMapNode.Add("0", "To");
-            myMapNode.Add("1", "be");
-            myMapNode.Add("2", "To");
-            myMapNode.Add("3", "or");
-            myMapNode.Add("4", "not");
-            myMapNode.Add("5", "be");
-
-            //Get Value and Display
-            string hash5 = myMapNode.Get("5");
-            Console.WriteLine("5th index  value: " + hash5);
-
-            //Get Value and Display
-            string hash2 = myMapNode.Get("2");
-            Console.WriteLine("2nd index  value: " + hash2);
+            MyMapNode<string, string> hash = new MyMapNode<string, string>(18);
+            hash.Add("0", "Paranoids");
+            hash.Add("1", "are");
+            hash.Add("2", "not");
+            hash.Add("3", "paranoid");
+            hash.Add("4", "because");
+            hash.Add("5", "they");
+            hash.Add("6", "are");
+            hash.Add("7", "paranoid");
+            hash.Add("8", "but");
+            hash.Add("9", "because");
+            hash.Add("10", "they");
+            hash.Add("11", "keep");
+            hash.Add("12", "putting");
+            hash.Add("13", "themselves");
+            hash.Add("14", "delibrately");
+            hash.Add("15", "into");
+            hash.Add("16", "paranoid");
+            hash.Add("17", "avoidable");
+            hash.Add("18", "situation");
+            string hash12 = hash.Get("12");
+            Console.WriteLine("12th index value: " + hash12);
         }
+
     }
 }
